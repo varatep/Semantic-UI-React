@@ -239,10 +239,7 @@ export default class Dropdown extends Component {
     openOnFocus: PropTypes.bool,
 
     /** Array of Dropdown.Item props e.g. `{ text: '', value: '' }` */
-    options: customPropTypes.every([
-      customPropTypes.disallow(['children']),
-      PropTypes.arrayOf(PropTypes.shape(DropdownItem.propTypes)),
-    ]),
+    options: customPropTypes.itemShorthand,
 
     /** Placeholder text. */
     placeholder: PropTypes.string,
@@ -699,9 +696,9 @@ export default class Dropdown extends Component {
   // Getters
   // ----------------------------------------
 
-  // There are times when we need to calculate the options based on a value
+  // There are times when we need to calculate the items based on a value
   // that hasn't yet been persisted to state.
-  getMenuOptions = (value = this.state.value, options = this.props.options) => {
+  getDropdownItems = (value = this.state.value, options = this.props.options) => {
     const { multiple, search, allowAdditions, additionPosition, additionLabel } = this.props
     const { searchQuery } = this.state
 
@@ -748,13 +745,13 @@ export default class Dropdown extends Component {
 
   getSelectedItem = () => {
     const { selectedIndex } = this.state
-    const options = this.getMenuOptions()
+    const options = this.getDropdownItems()
 
     return _.get(options, `[${selectedIndex}]`)
   }
 
   getEnabledIndices = (givenOptions) => {
-    const options = givenOptions || this.getMenuOptions()
+    const options = givenOptions || this.getDropdownItems()
 
     return _.reduce(options, (memo, item, index) => {
       if (!item.disabled) memo.push(index)
@@ -769,7 +766,7 @@ export default class Dropdown extends Component {
   }
 
   getMenuItemIndexByValue = (value, givenOptions) => {
-    const options = givenOptions || this.getMenuOptions()
+    const options = givenOptions || this.getDropdownItems()
 
     return _.findIndex(options, ['value', value])
   }
@@ -818,7 +815,7 @@ export default class Dropdown extends Component {
   setSelectedIndex = (value = this.state.value, optionsProps = this.props.options) => {
     const { multiple } = this.props
     const { selectedIndex } = this.state
-    const options = this.getMenuOptions(value, optionsProps)
+    const options = this.getDropdownItems(value, optionsProps)
     const enabledIndicies = this.getEnabledIndices(options)
 
     let newSelectedIndex
@@ -884,7 +881,7 @@ export default class Dropdown extends Component {
     debug('moveSelectionBy()')
     debug(`offset: ${offset}`)
 
-    const options = this.getMenuOptions()
+    const options = this.getDropdownItems()
     const lastIndex = options.length - 1
 
     // Prevent infinite loop
@@ -1079,10 +1076,10 @@ export default class Dropdown extends Component {
     })
   }
 
-  renderOptions = () => {
+  renderDropdownItems = () => {
     const { multiple, search, noResultsMessage } = this.props
     const { selectedIndex, value } = this.state
-    const options = this.getMenuOptions()
+    const options = this.getDropdownItems()
 
     if (noResultsMessage !== null && search && _.isEmpty(options)) {
       return <div className='message'>{noResultsMessage}</div>
@@ -1092,17 +1089,15 @@ export default class Dropdown extends Component {
       ? optValue => _.includes(value, optValue)
       : optValue => optValue === value
 
-    return _.map(options, (opt, i) => (
-      <DropdownItem
-        key={`${opt.value}-${i}`}
-        active={isActive(opt.value)}
-        onClick={this.handleItemClick}
-        selected={selectedIndex === i}
-        {...opt}
+    return _.map(options, (opt, i) => {
+      return DropdownItem.create(opt, {
+        active: isActive(opt.value),
+        onClick: this.handleItemClick,
+        selected: selectedIndex === i,
         // Needed for handling click events on disabled items
-        style={{ ...opt.style, pointerEvents: 'all' }}
-      />
-    ))
+        style: { pointerEvents: 'all' },
+      })
+    })
   }
 
   renderMenu = () => {
@@ -1122,7 +1117,7 @@ export default class Dropdown extends Component {
     return (
       <DropdownMenu {...ariaOptions} className={menuClasses}>
         {createShorthand(DropdownHeader, val => ({ content: val }), header)}
-        {this.renderOptions()}
+        {this.renderDropdownItems()}
       </DropdownMenu>
     )
   }
