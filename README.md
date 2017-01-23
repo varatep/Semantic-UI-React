@@ -11,6 +11,8 @@
 </p>
 
 # [Semantic-UI-React (Stardust)][2]
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/Semantic-Org/Semantic-UI-React.svg)](https://greenkeeper.io/)
 [![Gitter](https://img.shields.io/badge/gitter-join_chat-1dce73.svg?logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB4PSIwIiB5PSI1IiBmaWxsPSIjZmZmIiB3aWR0aD0iMSIgaGVpZ2h0PSI1Ii8%2BPHJlY3QgeD0iMiIgeT0iNiIgZmlsbD0iI2ZmZiIgd2lkdGg9IjEiIGhlaWdodD0iNyIvPjxyZWN0IHg9IjQiIHk9IjYiIGZpbGw9IiNmZmYiIHdpZHRoPSIxIiBoZWlnaHQ9IjciLz48cmVjdCB4PSI2IiB5PSI2IiBmaWxsPSIjZmZmIiB3aWR0aD0iMSIgaGVpZ2h0PSI0Ii8%2BPC9zdmc%2B&logoWidth=8&style=flat-square&maxAge=2592000)](https://gitter.im/Semantic-Org/Semantic-UI-React)
 [![Circle CI](https://img.shields.io/circleci/project/Semantic-Org/Semantic-UI-React/master.svg?style=flat-square)](https://circleci.com/gh/Semantic-Org/Semantic-UI-React/tree/master)
 [![Codecov](https://img.shields.io/codecov/c/github/Semantic-Org/Semantic-UI-React/master.svg?style=flat-square)](https://codecov.io/gh/Semantic-Org/Semantic-UI-React)
