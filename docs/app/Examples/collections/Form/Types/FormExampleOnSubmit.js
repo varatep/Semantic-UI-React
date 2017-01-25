@@ -36,9 +36,9 @@ class FormExampleOnSubmit extends Component {
       <Form onSubmit={this.handleSubmit}>
         <Form.Group widths='equal'>
           <Form.Input label='Name' name='name' placeholder='Name' />
-          <Form.Select label='Gender' name='gender' options={genders} placeholder='Gender' />
+          <Form.Select label='Gender' name='gender' items={genders} placeholder='Gender' />
         </Form.Group>
-        <Form.Select label='Products' name='products' options={products} placeholder='Search...' search multiple />
+        <Form.Select label='Products' name='products' items={products} placeholder='Search...' search multiple />
         <Form.Group widths='2'>
           <Form.Field>
             <label>Plan</label>
