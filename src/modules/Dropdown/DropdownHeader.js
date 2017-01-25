@@ -3,6 +3,7 @@ import cx from 'classnames'
 import React, { PropTypes } from 'react'
 
 import {
+  createShorthandFactory,
   customPropTypes,
   getElementType,
   getUnhandledProps,
@@ -50,5 +51,7 @@ DropdownHeader.propTypes = {
   /** Shorthand for Icon. */
   icon: customPropTypes.itemShorthand,
 }
+
+DropdownHeader.create = createShorthandFactory(DropdownHeader, val => ({ content: val }))
 
 export default DropdownHeader
