@@ -73,7 +73,7 @@ Icon.propTypes = {
   /** Formatted to appear bordered. */
   bordered: PropTypes.bool,
 
-  /** Icon can formatted to appear circular. */
+  /** Icon can be formatted to appear circular. */
   circular: PropTypes.bool,
 
   /** Additional classes. */
@@ -91,7 +91,7 @@ Icon.propTypes = {
   /** Fitted, without space to left or right of Icon. */
   fitted: PropTypes.bool,
 
-  /** Icon can flipped. */
+  /** Icon can be flipped. */
   flipped: PropTypes.oneOf(['horizontally', 'vertically']),
 
   /** Formatted to have its colors inverted for contrast. */
@@ -106,7 +106,7 @@ Icon.propTypes = {
   /** Name of the icon. */
   name: customPropTypes.suggest(SUI.ICONS_AND_ALIASES),
 
-  /** Icon can rotated. */
+  /** Icon can be rotated. */
   rotated: PropTypes.oneOf(['clockwise', 'counterclockwise']),
 
   /** Size of the icon. */
